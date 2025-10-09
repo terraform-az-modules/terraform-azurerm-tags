@@ -1,0 +1,51 @@
+---
+#
+# This is the canonical configuration for the `README.md`
+# Run `make readme` to rebuild the `README.md`
+#
+
+
+# Name of this project
+name : Terraform Azure Module Template
+
+# License of this project
+license: "APACHE"
+
+# Canonical GitHub repo
+github_repo: terraform-az-modules/terraform-azure-tags
+
+# Badges to display
+badges:
+  - name: "Latest Release"
+    image: "https://img.shields.io/github/release/clouddrove/terraform-azure-labels.svg"
+    url: "https://github.com/terraform-az-modules/terraform-azure-tags/releases/latest"
+  - name: "Licence"
+    image: "https://img.shields.io/badge/License-APACHE-blue.svg"
+    url: "LICENSE.md"
+
+#  description of this project
+description: |-
+  Terraform Azure Module Template to create new modules using this as baseline
+
+# extra content
+include:
+  - "terraform.md"
+
+# How to use this project
+# yamllint disable rule:line-length
+usage: |-
+  ### Simple Example
+  Here is an example of how you can use this module in your inventory structure:
+  ```hcl
+    module "labels" {
+      source        = "../"
+      name          = "labels"
+      environment   = "test"
+      label_order   = ["name", "environment", "location"]
+      business_unit = "Corp"
+      attributes    = ["private"]
+      extra_tags    = {
+      Application   = "Test"
+      }
+    }
+  ```
