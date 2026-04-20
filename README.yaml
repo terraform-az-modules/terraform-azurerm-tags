@@ -1,51 +1,48 @@
----
-#
-# This is the canonical configuration for the `README.md`
-# Run `make readme` to rebuild the `README.md`
-#
+name: Terraform Azure Tags
 
+intro: |-
+  With our comprehensive DevOps toolkit - streamline operations, automate workflows, enhance collaboration and deploy with confidence.
 
-# Name of this project
-name : Terraform Azure Module Template
+badges_text: "Latest Release | tfsec | License | Changelog"
 
-# License of this project
+about: |-
+  Terraform module to create and manage Tags on Azure.
+
 license: "APACHE"
 
-# Canonical GitHub repo
-github_repo: terraform-az-modules/terraform-azure-tags
+github_repo: terraform-az-modules/terraform-azurerm-tags
 
-# Badges to display
 badges:
-  - name: "Latest Release"
-    image: "https://img.shields.io/github/release/clouddrove/terraform-azure-labels.svg"
-    url: "https://github.com/terraform-az-modules/terraform-azure-tags/releases/latest"
+  - name: "Terraform"
+    image: "https://img.shields.io/badge/Terraform-v1.6-green"
+    url: "https://www.terraform.io"
+
   - name: "Licence"
     image: "https://img.shields.io/badge/License-APACHE-blue.svg"
     url: "LICENSE.md"
 
-#  description of this project
+prerequisites:
+  - name: Terraform
+    url: https://learn.hashicorp.com/terraform/getting-started/install.html
+    version: ">= 1.6.6"
+
+providers:
+  - name: azurerm
+    url: https://registry.terraform.io/providers/hashicorp/azurerm/latest
+    version: ">= 4.0"
+
 description: |-
-  Terraform Azure Module Template to create new modules using this as baseline
+  Terraform module to create and manage Tags on Azure.
 
-# extra content
-include:
-  - "terraform.md"
-
-# How to use this project
-# yamllint disable rule:line-length
 usage: |-
-  ### Simple Example
-  Here is an example of how you can use this module in your inventory structure:
+  ### Example
+
   ```hcl
-    module "labels" {
-      source        = "../"
-      name          = "labels"
-      environment   = "test"
-      label_order   = ["name", "environment", "location"]
-      business_unit = "Corp"
-      attributes    = ["private"]
-      extra_tags    = {
-      Application   = "Test"
-      }
-    }
+  module "tags" {
+    source = "./"
+
+    name                = "tags-demo"
+    resource_group_name = "rg-demo"
+    location            = "Central India"
+  }
   ```
